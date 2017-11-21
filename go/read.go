@@ -1,6 +1,6 @@
 package ringN
 
-func (c *Circular) Read(buf []byte) (n int) {
+func (c *Ring) Read(buf []byte) (n int) {
   for n = 0; c.N < len(c.buf) && n < len(buf); n++ {
     end := c.end
     if  end == len(c.buf) {
