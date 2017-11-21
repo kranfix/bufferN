@@ -15,3 +15,11 @@ func New(n int) *Ring {
   r.N = 0
   return r
 }
+
+func (r *Ring) Len() int {
+  return c.N
+}
+
+func (r *Ring) Cap() int {
+  return len(c.buf)
+}
