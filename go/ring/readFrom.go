@@ -21,10 +21,6 @@ func (r *Ring) ReadFrom(rio io.Reader) (n int64, err error) {
       return
     }
 
-    if err != nil {
-      return
-    }
-
     N,err = rio.Read(c.buf[:off])
     n += int64(N)
     end = N
