@@ -1,16 +1,20 @@
 package ringN
 
-func (c *Ring) Read(buf []byte) (n int) {
-  for n = 0; c.N < len(c.buf) && n < len(buf); n++ {
-    end := c.end
-    if  end == len(c.buf) {
-     end = 0
-    }
-    c.buf[end] = buf[n]
-    end++
+/*
+Read reads the ring buffer and stores it on buf data
+*/
+func (r *Ring) Read(buf []byte) (n int) {
+  for n = 0; r.N > 0 && n < len(buf); n++ {
+    off := r.off
+    buf[n] = r.buf[off]
 
-    c.end = end
-    c.N++
+    off++
+    if off == len(r.buf){
+      off = 0
+    }
+
+    r.off = off
+    r.N--
   }
   return n
 }

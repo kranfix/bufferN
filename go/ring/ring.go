@@ -17,9 +17,9 @@ func New(n int) *Ring {
 }
 
 func (r *Ring) Len() int {
-  return c.N
+  return r.N
 }
 
 func (r *Ring) Cap() int {
-  return len(c.buf)
+  return len(r.buf)
 }
