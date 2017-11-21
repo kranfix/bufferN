@@ -1,17 +1,17 @@
 package ringN
 
-func (c *RingN) Write(buf []byte) (n int) {
-  for n = 0; c.N > 0 && n < len(buf); n++ {
-    off := c.off
-    buf[k] = c.buf[c.off]
+func (r *Ring) Write(buf []byte) (n int) {
+  for n = 0; r.N > 0 && n < len(buf); n++ {
+    off := r.off
+    buf[n] = r.buf[off]
 
     off++
-    if off == len(c.buf){
+    if off == len(r.buf){
       off = 0
     }
 
-    c.off = off
-    c.N--
+    r.off = off
+    r.N--
   }
   return n
 }
