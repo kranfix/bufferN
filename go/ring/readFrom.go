@@ -17,7 +17,7 @@ func (r *Ring) ReadFrom(rio io.Reader) (n int64, err error) {
     n = int64(N)
     end += N
 
-    if end < r.Cap || err != nil {
+    if end < r.Cap() || err != nil {
       return
     }
 
