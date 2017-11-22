@@ -3,7 +3,7 @@ package ringN
 /*
 Read reads the ring buffer and stores it on buf data
 */
-func (r *Ring) Read(buf []byte) (n int) {
+func (r *Ring) Read(buf []byte) (n int,err error) {
   for n = 0; r.N > 0 && n < len(buf); n++ {
     off := r.off
     buf[n] = r.buf[off]
@@ -16,5 +16,5 @@ func (r *Ring) Read(buf []byte) (n int) {
     r.off = off
     r.N--
   }
-  return n
+  return
 }
